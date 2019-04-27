@@ -6,7 +6,8 @@
 
 increase(love) -> fifteen;
 increase(fifteen) -> thirty;
-increase(thirty) -> forty.
+increase(thirty) -> forty;
+increase(forty) -> game.
 
 start() -> {love, love}.
 
