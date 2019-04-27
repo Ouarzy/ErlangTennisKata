@@ -23,4 +23,7 @@ player2_won_point_test() ->
 
 
 player1_won_point_and_player2_won_point_test() -> 
-	?assertEqual({fifteen, fifteen}, play([player1, player2, player2])).
+	?assertEqual({fifteen, fifteen}, play([player1, player2])).
+
+player1_won_all_points_test() -> 
+	?assertEqual({forty, love}, play([player1, player1, player1])).

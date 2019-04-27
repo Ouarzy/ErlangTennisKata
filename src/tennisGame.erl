@@ -5,7 +5,8 @@
 -export([wonPoint/2]).
 
 increase(love) -> fifteen;
-increase(fifteen) -> thirty.
+increase(fifteen) -> thirty;
+increase(thirty) -> forty.
 
 start() -> {love, love}.
 
