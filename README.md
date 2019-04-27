@@ -1,9 +1,10 @@
 tennisKata
 =====
 
-An OTP application
+An humble attempt to solve the Tennis kata
+http://codingdojo.org/kata/Tennis/
 
-Build
+Test
 -----
 
-    $ rebar3 compile
+    $ rebar3 eunit
