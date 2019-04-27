@@ -2,15 +2,25 @@
 
 -include_lib("eunit/include/eunit.hrl").
 
-new_game_test() -> ?assertEqual(tennisGame:start(), {love, love}).
+play([Winner_of_point | []]) ->
+  play([Winner_of_point], tennisGame:start());
+play(Players) ->
+  play(Players, tennisGame:start()).
+play([Winner_of_point | []], Score) ->
+  tennisGame:wonPoint(Winner_of_point, Score);
+play([Winner_of_point | Rest], Score) ->
+  NewScore = tennisGame:wonPoint(Winner_of_point, Score),
+  play(Rest, NewScore).
+
+start_game_test() -> ?assertEqual(tennisGame:start(), {love, love}).
 
 player1_won_point_test() -> 
-	?assertEqual({fifteen, love},  tennisGame:wonPoint(player1, tennisGame:start())).
+	?assertEqual({fifteen, love}, play([player1])).
 
 
 player2_won_point_test() -> 
-	?assertEqual({love, fifteen}, tennisGame:wonPoint(player2, tennisGame:start())).
+	?assertEqual({love, fifteen}, play([player2])).
 
 
 player1_won_point_and_player2_won_point_test() -> 
-	?assertEqual({fifteen, fifteen}, tennisGame:wonPoint(player2, tennisGame:wonPoint(player1, tennisGame:start()))).
+	?assertEqual({fifteen, fifteen}, play([player1, player2, player2])).
