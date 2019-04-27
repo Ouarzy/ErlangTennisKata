@@ -29,3 +29,11 @@ deuce_test() ->
 advantage_test() ->
 	?assertEqual({advantage, forty}, play([player1, player1, player1,  player2, player2, player2, player1])),
 	?assertEqual({forty, advantage}, play([player1, player1, player1,  player2, player2, player2, player2])).
+
+advantage_thenWin_test() ->
+	?assertEqual({game, forty}, play([player1, player1, player1,  player2, player2, player2, player1, player1])),
+	?assertEqual({forty, game}, play([player1, player1, player1,  player2, player2, player2, player2, player2])).
+
+advantage_thenDeuce_test() ->
+	?assertEqual({deuce}, play([player1, player1, player1,  player2, player2, player2, player1, player2])),
+	?assertEqual({deuce}, play([player1, player1, player1,  player2, player2, player2, player2, player1])).

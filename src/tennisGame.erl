@@ -7,12 +7,15 @@
 increase(love) -> fifteen;
 increase(fifteen) -> thirty;
 increase(thirty) -> forty;
-increase(forty) -> game.
+increase(forty) -> game;
+increase(advantage) -> game.
 
 start() -> {love, love}.
 
 wonPoint(player1, {deuce}) -> {advantage, forty};
 wonPoint(player2, {deuce}) -> {forty, advantage};
+wonPoint(player1, {forty, advantage}) -> {deuce};
+wonPoint(player2, {advantage, forty}) -> {deuce};
 wonPoint(player2, {forty, thirty}) -> {deuce};
 wonPoint(player1, {thirty, forty}) -> {deuce};
 wonPoint(player1, {P1PreviousScore, P2PreviousScore}) -> {increase(P1PreviousScore), P2PreviousScore};
